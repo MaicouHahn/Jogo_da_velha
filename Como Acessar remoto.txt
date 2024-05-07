@@ -1,0 +1,7 @@
+Baixar ngrok no https://ngrok.com/download
+Cadastrar o token do ngrok :
+                            -Your Auth Token -> ngrok config add-authtoken
+
+para externizar a porta o comando é "ngrok http 5000"
+
+Compartilhar o link que esta em "Forwarding"

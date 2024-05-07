@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+    <meta http-equiv="refresh" content="1">
+</head>
+<body>
+    <h1>Jogo da Velha</h1>
+    <table>
+        {% for row in board %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('td').click(function() {
+                var row = $(this).parent().index();
+                var col = $(this).index();
+                $.post('/move', {'row': row, 'col': col, 'player': 'X'}, function() {
+                    location.reload();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
